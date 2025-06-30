@@ -1,0 +1,8 @@
+#calc-body{
+    background-color: blueviolet;
+    width: 400px;
+    height: 750px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
