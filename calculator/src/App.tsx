@@ -8,9 +8,9 @@ import { CalcBody } from "./components/CalcBody/index.tsx";
 export function App (){
   return (<>
     <Header />
-    <body>
+    <main>
       <CalcBody />
-    </body>
+    </main>
   </>)
 }
 

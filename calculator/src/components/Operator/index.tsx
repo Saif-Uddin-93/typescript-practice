@@ -1,8 +1,8 @@
 import "./style.css"
 
-export function Number(){
+export function Operator(){
     return (<>
-        <button className="number">
+        <button className="operator">
             
         </button>
     </>)

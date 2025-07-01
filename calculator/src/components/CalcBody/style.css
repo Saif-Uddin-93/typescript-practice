@@ -1,8 +1,10 @@
 #calc-body{
+    display: flex;
+    flex-direction: column;
     background-color: blueviolet;
     width: 400px;
     height: 750px;
     display: flex;
-    align-items: start;
-    justify-content: center;
+    align-items: center;
+    justify-content: start;
 }
