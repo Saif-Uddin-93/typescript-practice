@@ -12,10 +12,10 @@ export function createElements (instances: number, component: React.ReactElement
             number: created.length === 10 ? "." : created.length,
         }
     }
+    
     if (props && 'number' in props) {
         props = addNumber()
     }
-
 
     const newElement = cloneElement(component, props)
     created.push(newElement)

@@ -19,7 +19,19 @@ export function KeyPad(){
     return (<>
         <div id="keypad">
             {...opBtns}
-            {...numBtns}
+            <section id="number-btns"> 
+                {numBtns[7]}
+                {numBtns[8]}
+                {numBtns[9]}
+                {numBtns[4]}
+                {numBtns[5]}
+                {numBtns[6]}
+                {numBtns[1]}
+                {numBtns[2]}
+                {numBtns[3]}
+                {numBtns[0]}
+                {numBtns[10]}
+            </ section>
         </div>
     </>)
 }
