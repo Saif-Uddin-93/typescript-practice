@@ -1,10 +1,10 @@
 import "./style.css"
 
-export function Number(prop?: any): React.ReactElement{
-    console.log("Number component rendered with prop:", prop);
+export function Number(props?: any): React.ReactElement{
+    console.log("Number component rendered with number:", props.number);
     return (<>
         <button className="number">
-            {`${prop.label}`}
+            {`${props.number}`}
         </button>
     </>)
 }
