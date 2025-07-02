@@ -22,8 +22,3 @@ export function createElements (instances: number, component: React.ReactElement
 
     return createElements(instances, component, created, props)
 }
-
-export function assignNumber(numBtns: React.ReactElement[]): React.ReactElement[] {
-
-    return (numBtns)
-}

@@ -2,7 +2,6 @@ import "./style.css"
 import { Link, NavLink } from "react-router-dom"
 
 export function Header () {
-  console.log("Header rendering");
   const test = "test";
 
   return (
