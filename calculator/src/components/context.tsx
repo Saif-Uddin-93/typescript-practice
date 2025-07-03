@@ -1,36 +1,32 @@
+import React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
-const CalculatorContext = createContext();
-const CalculatorUpdateContext = createContext();
-
-export function useCalculatorContext(){
-    return useContext(CalculatorContext)
+type CalcConextProviderProps = {
+    children: React.ReactNode;
 }
 
-export function useCalculatorUpdateContext(){
-    return useContext(CalculatorUpdateContext)
-}
+type CalculatorContextType = {
+    displayedDigits: React.ReactElement[];
+    setDisplayedDigits: React.Dispatch<React.SetStateAction<React.ReactElement[]>>;
+};
 
-export function CalculatorProvider ({ children }) {
+export const CalculatorContext = createContext<CalculatorContextType | null>(null);
 
-    function toggleLoggedIn(){
-        setLoggedIn((loggedIn)=>!loggedIn);
-        setLocal("skills-tracker", userDB);
+function CalculatorContextProvider ({children}: CalcConextProviderProps) {
+    const [displayedDigits, setDisplayedDigits] = useState<React.ReactElement[]>([]);
+    const numberBtn = document.getElementsByClassName("number");
+
+    const addDigit = (item: React.ReactElement) => {
+        setDisplayedDigits([...displayedDigits, item]);
     }
 
-    useEffect(()=>{
-        if(loggedIn){
-            setUser(userDB.currentUser);
-        }else{
-            setUser("");
-        }
-    }, [loggedIn])
-
     return(
-        <CalculatorContext.Provider value={{loggedIn, user}}>
-            <CalculatorUpdateContext.Provider value={toggleLoggedIn}>
-                {children}
-            </CalculatorUpdateContext.Provider>
+        <CalculatorContext.Provider 
+            value={{
+                displayedDigits,
+                setDisplayedDigits
+            }}>
+            {children}
         </CalculatorContext.Provider>
     )
 }
