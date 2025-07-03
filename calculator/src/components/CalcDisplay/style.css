@@ -7,4 +7,10 @@
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
+    :first-child {
+        margin-left: 20px;
+    }
+    :last-child {
+        margin-right: 20px;
+    }
 }
