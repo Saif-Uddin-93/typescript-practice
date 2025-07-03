@@ -14,13 +14,22 @@ export const CalculatorContext = createContext<CalculatorContextType | null>(nul
 
 export function CalculatorContextProvider ({children}: CalcConextProviderProps) {
     const [displayedDigits, setDisplayedDigits] = useState<React.ReactElement[]>([]);
+    const memoizedDisplayedDigits = React.useMemo(() => ({
+            displayedDigits, 
+            setDisplayedDigits
+        }),
+        [displayedDigits, setDisplayedDigits]
+    );
 
     return(
         <CalculatorContext.Provider 
-            value={{
-                displayedDigits,
-                setDisplayedDigits
-            }}>
+            value={
+            // {
+            //     displayedDigits,
+            //     setDisplayedDigits
+            // }
+            memoizedDisplayedDigits
+            }>
             {children}
         </CalculatorContext.Provider>
     )
