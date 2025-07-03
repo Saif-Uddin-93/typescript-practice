@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 type CalcContextProviderProps = {
     children: React.ReactNode;
@@ -8,17 +8,22 @@ type CalcContextProviderProps = {
 type CalculatorContextType = {
     displayedDigits: React.ReactElement[];
     setDisplayedDigits: React.Dispatch<React.SetStateAction<React.ReactElement[]>>;
+    total: number;
+    setTotal: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const CalculatorContext = createContext<CalculatorContextType | null>(null);
 
 export function CalculatorContextProvider ({children}: CalcContextProviderProps) {
     const [displayedDigits, setDisplayedDigits] = useState<React.ReactElement[]>([]);
+    const [total, setTotal] = useState<number>(0);
     const memoizedDisplayedDigits = React.useMemo(() => ({
             displayedDigits, 
-            setDisplayedDigits
+            setDisplayedDigits,
+            total,
+            setTotal,
         }),
-        [displayedDigits, setDisplayedDigits]
+        [displayedDigits, setDisplayedDigits, total, setTotal]
     );
 
     return(
