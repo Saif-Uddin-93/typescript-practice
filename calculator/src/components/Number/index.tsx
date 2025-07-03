@@ -8,7 +8,7 @@ export function Number(props?: any): React.ReactElement{
     const handleClick = () => {
         console.log(`${props.number} clicked`);
         context.setDisplayedDigits([...context.displayedDigits, Digit({
-            key: `Digit-${context.displayedDigits.length}`,
+            key: `Number-${context.displayedDigits.length}`,
             value: props.number})]);
         console.log(context?.displayedDigits)
     }

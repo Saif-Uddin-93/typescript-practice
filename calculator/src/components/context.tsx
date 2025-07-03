@@ -1,7 +1,7 @@
 import React from "react";
 import { createContext, useEffect, useState } from "react";
 
-type CalcConextProviderProps = {
+type CalcContextProviderProps = {
     children: React.ReactNode;
 }
 
@@ -12,7 +12,7 @@ type CalculatorContextType = {
 
 export const CalculatorContext = createContext<CalculatorContextType | null>(null);
 
-export function CalculatorContextProvider ({children}: CalcConextProviderProps) {
+export function CalculatorContextProvider ({children}: CalcContextProviderProps) {
     const [displayedDigits, setDisplayedDigits] = useState<React.ReactElement[]>([]);
     const memoizedDisplayedDigits = React.useMemo(() => ({
             displayedDigits, 
