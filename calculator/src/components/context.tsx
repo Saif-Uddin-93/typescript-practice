@@ -14,11 +14,6 @@ export const CalculatorContext = createContext<CalculatorContextType | null>(nul
 
 export function CalculatorContextProvider ({children}: CalcConextProviderProps) {
     const [displayedDigits, setDisplayedDigits] = useState<React.ReactElement[]>([]);
-    const numberBtn = document.getElementsByClassName("number");
-
-    const addDigit = (item: React.ReactElement) => {
-        setDisplayedDigits([...displayedDigits, item]);
-    }
 
     return(
         <CalculatorContext.Provider 
@@ -29,4 +24,17 @@ export function CalculatorContextProvider ({children}: CalcConextProviderProps) 
             {children}
         </CalculatorContext.Provider>
     )
+}
+
+// export function addDigit(digit : React.ReactElement) {
+//     const context = useCalculatorContext();
+//     context.setDisplayedDigits([...context.displayedDigits, digit]);
+// }
+
+export function useCalculatorContext() {
+    const context = React.useContext(CalculatorContext);
+    if (!context) {
+        throw new Error("useCalculatorContext must be used within a CalculatorContextProvider");
+    }
+    return context;
 }
