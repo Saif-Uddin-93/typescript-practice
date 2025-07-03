@@ -12,7 +12,7 @@ type CalculatorContextType = {
 
 export const CalculatorContext = createContext<CalculatorContextType | null>(null);
 
-function CalculatorContextProvider ({children}: CalcConextProviderProps) {
+export function CalculatorContextProvider ({children}: CalcConextProviderProps) {
     const [displayedDigits, setDisplayedDigits] = useState<React.ReactElement[]>([]);
     const numberBtn = document.getElementsByClassName("number");
 
