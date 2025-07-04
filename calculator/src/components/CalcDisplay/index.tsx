@@ -10,8 +10,10 @@ export function CalcDisplay (){
     });
     return (<>
         <div id="calc-display">
-            { context.displayedDigits === undefined || context.displayedDigits.length === 0 ? totalDigit  : null}
-            { ...context.displayedDigits }
+            <div id="display-container">
+                { context.displayedDigits === undefined || context.displayedDigits.length === 0 ? totalDigit  : null}
+                { ...context.displayedDigits }
+            </div>
         </div>
     </>)    
 }
