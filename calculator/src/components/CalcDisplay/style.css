@@ -17,9 +17,10 @@
     } */
     #display-container{
         width: 352px;
+        height: 100px;
         display: flex;
         flex-wrap: wrap;
         justify-content: start;
-        align-items: center;
+        /* align-items: center; */
     }
 }
