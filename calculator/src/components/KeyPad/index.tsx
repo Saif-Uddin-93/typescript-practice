@@ -2,18 +2,76 @@ import "./style.css"
 // import { createElements } from "../../utils/tools.tsx"
 import { Number } from "../Number/index.tsx"
 import { Operator } from "../Operator/index.tsx"
+import "../../utils/mathFunctions.ts"
 // import React from "react"
 
 export function KeyPad(){
     // const numbers = 11;
-    // const operators = [
-    //     "C", "CE", "(", ")",
-    //     "×", "-", "+", "=",
-    //     "÷", "%", "π", "√", 
-    //     "x!", "xʸ", "ln", "e",
-    //     "sin", "cos", "tan", "log",
-    //     "+/-"
-    // ];
+    const operators = {
+        "C": ()=>{
+            console.log("Clear clicked");
+        },
+        "CE": ()=>{
+            console.log("Clear Entry clicked");
+        },
+        "(": ()=>{
+            console.log("Left Parenthesis clicked");
+        },
+        ")": ()=>{
+            console.log("Right Parenthesis clicked");
+        },
+        "×": ()=>{
+            console.log("Multiply clicked");
+        },
+        "-": ()=>{
+            console.log("Subtract clicked");
+        },
+        "+": ()=>{
+            console.log("Add clicked");
+        },
+        "=":()=>{
+            console.log("Equals clicked");
+        },
+        "÷": ()=>{
+            console.log("Divide clicked");
+        },
+        "%":()=>{
+            console.log("Percentage clicked");
+        },
+        "π":()=>{
+            console.log("Pi clicked");
+        },
+        "√":()=>{
+            console.log("Square Root clicked");
+        }, 
+        "x!":()=>{
+            console.log("Factorial clicked");
+        },
+        "xʸ":()=>{
+            console.log("Power clicked");
+        },
+        "ln":()=>{
+            console.log("Natural Log clicked");
+        },
+        "e":()=>{
+            console.log("Euler's Number clicked");
+        },
+        "sin":()=>{
+            console.log("Sine clicked");
+        },
+        "cos":()=>{
+            console.log("Cosine clicked");
+        },
+        "tan":()=>{
+            console.log("Tangent clicked");
+        },
+        "log":()=>{
+            console.log("Logarithm clicked");
+        },
+        "+/-":()=>{
+            console.log("Plus/Minus clicked");
+        }
+    };
 
     // const numberProps = {
     //     key: 0,
