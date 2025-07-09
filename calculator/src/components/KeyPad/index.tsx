@@ -102,38 +102,38 @@ export function KeyPad(){
         <div id="keypad">
             {/* {...opBtns} */}
             {/* <section id="number-btns">  */}
-            <Operator operator="e" />
-            <Operator operator="π" />
-            <Operator operator="(" />
-            <Operator operator=")" />
-            <Operator operator="sin" />
-            <Operator operator="cos" />
-            <Operator operator="tan" />
-            <Operator operator="log" />
-            <Operator operator="ln" />
-            <Operator operator="√" />
-            <Operator operator="x!" />
-            <Operator operator="xʸ" />
-            <Operator operator="+/-" />
-            <Operator operator="%" />
-            <Operator operator="C" />
+            <Operator operator="e" func={operators["e"]}/>
+            <Operator operator="π" func={operators["π"]}/>
+            <Operator operator="(" func={operators["("]}/>
+            <Operator operator=")" func={operators[")"]}/>
+            <Operator operator="sin" func={operators["sin"]}/>
+            <Operator operator="cos" func={operators["cos"]}/>
+            <Operator operator="tan" func={operators["tan"]}/>
+            <Operator operator="log" func={operators["log"]}/>
+            <Operator operator="ln" func={operators["ln"]}/>
+            <Operator operator="√" func={operators["√"]}/>
+            <Operator operator="x!" func={operators["x!"]}/>
+            <Operator operator="xʸ" func={operators["xʸ"]}/>
+            <Operator operator="+/-" func={operators["+/-"]}/>
+            <Operator operator="%" func={operators["%"]}/>
+            <Operator operator="C"  func={operators["C"]}/>
             <Operator operator="CE" func={operators["CE"]}/>
-            <Number number="7" />
-            <Number number="8" />
-            <Number number="9" />
-            <Operator operator="÷" />
-            <Number number="4" />
-            <Number number="5" />
-            <Number number="6" />
-            <Operator operator="×" />
-            <Number number="1" />
-            <Number number="2" />
-            <Number number="3" />
-            <Operator operator="-" />
-            <Number number="0" />
-            <Number number="." />
-            <Operator operator="=" />
-            <Operator operator="+" />
+            <Number number="7"/>
+            <Number number="8"/>
+            <Number number="9"/>
+            <Operator operator="÷" func={operators["÷"]}/>
+            <Number number="4"/>
+            <Number number="5"/>
+            <Number number="6"/>
+            <Operator operator="×" func={operators["×"]}/>
+            <Number number="1"/>
+            <Number number="2"/>
+            <Number number="3"/>
+            <Operator operator="-" func={operators["-"]}/>
+            <Number number="0"/>
+            <Number number="."/>
+            <Operator operator="=" func={operators["="]}/>
+            <Operator operator="+" func={operators["+"]}/>
             {/* </ section> */}
         </div>
     </>)
