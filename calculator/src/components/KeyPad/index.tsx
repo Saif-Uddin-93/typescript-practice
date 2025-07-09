@@ -5,10 +5,8 @@ import { Operator } from "../Operator/index.tsx"
 import "../../utils/mathFunctions.ts"
 import { useCalculatorContext } from "../context"
 import * as mathFuncs from "../../utils/mathFunctions.ts"
-// import React from "react"
 
 export function KeyPad(){
-    // const numbers = 11;
     const context = useCalculatorContext();
     const operators = {
         "C": ()=>{
@@ -41,9 +39,9 @@ export function KeyPad(){
         },
         "+": ()=>{
             console.log("Add clicked");
-            mathFuncs.sortCalculation(context.calculation);
         },
         "=":()=>{
+            mathFuncs.equals();
             console.log("Equals clicked");
         },
         "÷": ()=>{
@@ -81,24 +79,13 @@ export function KeyPad(){
         },
         "log":()=>{
             console.log("Logarithm clicked");
+            mathFuncs.logarithm(1, 2); // Example usage, replace with actual logic
         },
         "+/-":()=>{
             console.log("Plus/Minus clicked");
         }
     };
 
-    // const numberProps = {
-    //     key: 0,
-    //     number: "0"
-    // }
-
-    // const operatorProps = {
-    //     key: 0,
-    //     operator: ""
-    // }
-
-    // const opBtns = createElements(operators.length, <Operator />);
-    // const numBtns = createElements(numbers, <Number />, [], numberProps);
     const operatorProps = (operator:string) => ({
         value: operator,
         func: operators[operator as keyof typeof operators]
@@ -106,8 +93,6 @@ export function KeyPad(){
 
     return (<>
         <div id="keypad">
-            {/* {...opBtns} */}
-            {/* <section id="number-btns">  */}
             <Operator key="e" {...operatorProps("e")}/>
             <Operator key="π" {...operatorProps("π")}/>
             <Operator key="(" {...operatorProps("(")}/>
@@ -140,7 +125,6 @@ export function KeyPad(){
             <Number key="." value="."/>
             <Operator key="=" {...operatorProps("=")}/>
             <Operator key="+" {...operatorProps("+")}/>
-            {/* </ section> */}
         </div>
     </>)
 }

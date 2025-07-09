@@ -80,6 +80,10 @@ export const eulerNumber = (): number => {
     return Math.E;
 }
 
+export const equals = (): number => {
+    return 1;
+}
+
 export const sortCalculation = (calculation: string[]): string[] => {
     const precedence: { [key: string]: number } = {
         "+": 1,
@@ -95,8 +99,6 @@ export const sortCalculation = (calculation: string[]): string[] => {
         "sin": 3,
         "cos": 3,
         "tan": 3,
-        // "π": 4,
-        // "e": 4,
     };
 
     return calculation.sort((a, b) => {
