@@ -14,6 +14,7 @@ export function Operator(props?: any): React.ReactElement {
                 value: props.operator
             })
         ]);
+        props.func();
         console.log(context?.displayedDigits);
     }
     return (<>

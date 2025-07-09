@@ -3,16 +3,28 @@ import "./style.css"
 import { Number } from "../Number/index.tsx"
 import { Operator } from "../Operator/index.tsx"
 import "../../utils/mathFunctions.ts"
+import { useCalculatorContext } from "../context"
 // import React from "react"
 
 export function KeyPad(){
     // const numbers = 11;
+    const context = useCalculatorContext();
     const operators = {
         "C": ()=>{
+            // "C" resets the entire calculation (all clear)
             console.log("Clear clicked");
+            context.setCalculation([]);
+            context.setDisplayedDigits([]);
         },
         "CE": ()=>{
+            // "CE" clears the current entry only
             console.log("Clear Entry clicked");
+            const displayed = context.displayedDigits.length;
+            const currentCalc = context.calculation.length;
+            const updatedDigits = context.displayedDigits.slice(currentCalc-1, displayed);
+            context.setCalculation(updatedDigits);
+            context.setDisplayedDigits([]);
+            console.log("Updated calculation array: ", context.calculation);
         },
         "(": ()=>{
             console.log("Left Parenthesis clicked");
@@ -105,7 +117,7 @@ export function KeyPad(){
             <Operator operator="+/-" />
             <Operator operator="%" />
             <Operator operator="C" />
-            <Operator operator="CE" />
+            <Operator operator="CE" func={operators["CE"]}/>
             <Number number="7" />
             <Number number="8" />
             <Number number="9" />

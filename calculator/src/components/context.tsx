@@ -10,8 +10,8 @@ type CalculatorContextType = {
     setDisplayedDigits: React.Dispatch<React.SetStateAction<React.ReactElement[]>>;
     total: number;
     setTotal: React.Dispatch<React.SetStateAction<number>>;
-    calculation: [];
-    setCalculation: React.Dispatch<React.SetStateAction<[]>>;
+    calculation: any[];
+    setCalculation: React.Dispatch<React.SetStateAction<any[]>>;
 };
 
 export const CalculatorContext = createContext<CalculatorContextType | null>(null);
@@ -19,7 +19,7 @@ export const CalculatorContext = createContext<CalculatorContextType | null>(nul
 export function CalculatorContextProvider ({children}: CalcContextProviderProps) {
     const [displayedDigits, setDisplayedDigits] = useState<React.ReactElement[]>([]);
     const [total, setTotal] = useState<number>(0);
-    const [calculation, setCalculation] = useState<[]>([]);
+    const [calculation, setCalculation] = useState<any[]>([]);
     const memoizedDisplayedDigits = React.useMemo(() => ({
             displayedDigits, 
             setDisplayedDigits,
