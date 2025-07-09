@@ -17,6 +17,61 @@ export const divide = (a: number, b: number): number => {
     return a / b;
 }
 
+export const percentage = (a: number): number => {
+    return a / 100;
+}
+
+export const factorial = (n: number): number => {
+    if (n < 0) {
+        throw new Error("Factorial is not defined for negative numbers");
+    }
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    let result = 1;
+    for (let i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+export const power = (base: number, exponent: number): number => {
+    return Math.pow(base, exponent);
+}
+
+export const squareRoot = (n: number): number => {
+    if (n < 0) {
+        throw new Error("Square root is not defined for negative numbers");
+    }
+    return Math.sqrt(n);
+}
+
+export const naturalLog = (n: number): number => {
+    if (n <= 0) {
+        throw new Error("Natural logarithm is not defined for non-positive numbers");
+    }
+    return Math.log(n);
+}
+
+export const logarithm = (n: number, base: number): number => {
+    if (n <= 0 || base <= 0 || base === 1) {
+        throw new Error("Logarithm is not defined for non-positive numbers or base 1");
+    }
+    return Math.log(n) / Math.log(base);
+}
+
+export const sine = (angle: number): number => {
+    return Math.sin(angle * (Math.PI / 180)); // Convert angle to radians
+}
+
+export const cosine = (angle: number): number => {
+    return Math.cos(angle * (Math.PI / 180)); // Convert angle to radians
+}
+
+export const tangent = (angle: number): number => {
+    return Math.tan(angle * (Math.PI / 180)); // Convert angle to radians
+}
+
 export const sortCalculation = (calculation: string[]): string[] => {
     const precedence: { [key: string]: number } = {
         "+": 1,
