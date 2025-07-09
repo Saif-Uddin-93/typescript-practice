@@ -4,6 +4,7 @@ import { Number } from "../Number/index.tsx"
 import { Operator } from "../Operator/index.tsx"
 import "../../utils/mathFunctions.ts"
 import { useCalculatorContext } from "../context"
+import * as mathfuncs from "../../utils/mathFunctions.ts"
 // import React from "react"
 
 export function KeyPad(){
@@ -40,6 +41,7 @@ export function KeyPad(){
         },
         "+": ()=>{
             console.log("Add clicked");
+            mathfuncs.sortCalculation(context.calculation);
         },
         "=":()=>{
             console.log("Equals clicked");
@@ -97,43 +99,47 @@ export function KeyPad(){
 
     // const opBtns = createElements(operators.length, <Operator />);
     // const numBtns = createElements(numbers, <Number />, [], numberProps);
+    const operatorProps = (operator:string) => ({
+        value: operator,
+        func: operators[operator as keyof typeof operators]
+    })
 
     return (<>
         <div id="keypad">
             {/* {...opBtns} */}
             {/* <section id="number-btns">  */}
-            <Operator operator="e" func={operators["e"]}/>
-            <Operator operator="π" func={operators["π"]}/>
-            <Operator operator="(" func={operators["("]}/>
-            <Operator operator=")" func={operators[")"]}/>
-            <Operator operator="sin" func={operators["sin"]}/>
-            <Operator operator="cos" func={operators["cos"]}/>
-            <Operator operator="tan" func={operators["tan"]}/>
-            <Operator operator="log" func={operators["log"]}/>
-            <Operator operator="ln" func={operators["ln"]}/>
-            <Operator operator="√" func={operators["√"]}/>
-            <Operator operator="x!" func={operators["x!"]}/>
-            <Operator operator="xʸ" func={operators["xʸ"]}/>
-            <Operator operator="+/-" func={operators["+/-"]}/>
-            <Operator operator="%" func={operators["%"]}/>
-            <Operator operator="C"  func={operators["C"]}/>
-            <Operator operator="CE" func={operators["CE"]}/>
-            <Number number="7"/>
+            <Operator key="e" {...operatorProps("e")}/>
+            <Operator key="π" {...operatorProps("π")}/>
+            <Operator key="(" {...operatorProps("(")}/>
+            <Operator key=")" {...operatorProps(")")}/>
+            <Operator key="sin" {...operatorProps("sin")}/>
+            <Operator key="cos" {...operatorProps("cos")}/>
+            <Operator key="tan" {...operatorProps("tan")}/>
+            <Operator key="log" {...operatorProps("log")}/>
+            <Operator key="ln" {...operatorProps("ln")}/>
+            <Operator key="√" {...operatorProps("√")}/>
+            <Operator key="x!" {...operatorProps("x!")}/>
+            <Operator key="xʸ" {...operatorProps("xʸ")}/>
+            <Operator key="+/-" {...operatorProps("+/-")}/>
+            <Operator key="%" {...operatorProps("%")}/>
+            <Operator key="C" {...operatorProps("C")}/>
+            <Operator key="CE" {...operatorProps("CE")}/>
+            <Number key="7" number="7"/>
             <Number number="8"/>
             <Number number="9"/>
-            <Operator operator="÷" func={operators["÷"]}/>
+            <Operator key="÷" {...operatorProps("÷")}/>
             <Number number="4"/>
             <Number number="5"/>
             <Number number="6"/>
-            <Operator operator="×" func={operators["×"]}/>
+            <Operator key="×" {...operatorProps("×")}/>
             <Number number="1"/>
             <Number number="2"/>
             <Number number="3"/>
-            <Operator operator="-" func={operators["-"]}/>
+            <Operator key="-" {...operatorProps("-")}/>
             <Number number="0"/>
             <Number number="."/>
-            <Operator operator="=" func={operators["="]}/>
-            <Operator operator="+" func={operators["+"]}/>
+            <Operator key="=" {...operatorProps("=")}/>
+            <Operator key="+" {...operatorProps("+")}/>
             {/* </ section> */}
         </div>
     </>)

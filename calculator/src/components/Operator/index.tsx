@@ -6,20 +6,20 @@ export function Operator(props?: any): React.ReactElement {
     const context = useCalculatorContext();
 
     const handleClick = () => {
-        console.log(`${props.operator} clicked`);
+        console.log(`${props.value} clicked`);
         context.setDisplayedDigits([
             ...context.displayedDigits,
             Digit({
                 key: `Operator-${context.displayedDigits.length}`,
-                value: props.operator
+                value: props.value
             })
         ]);
-        if (props.func) props.func();
+        props?.func();
         console.log(context?.displayedDigits);
     }
     return (<>
         <button className="operator" onClick={handleClick}>
-            {`${props.operator}`}
+            {`${props.value}`}
         </button>
     </>)
 }
