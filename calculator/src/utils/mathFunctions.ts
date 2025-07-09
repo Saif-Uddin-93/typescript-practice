@@ -72,6 +72,14 @@ export const tangent = (angle: number): number => {
     return Math.tan(angle * (Math.PI / 180)); // Convert angle to radians
 }
 
+export const pi = (): number => {
+    return Math.PI;
+}
+
+export const eulerNumber = (): number => {
+    return Math.E;
+}
+
 export const sortCalculation = (calculation: string[]): string[] => {
     const precedence: { [key: string]: number } = {
         "+": 1,
@@ -86,7 +94,9 @@ export const sortCalculation = (calculation: string[]): string[] => {
         "log": 3,
         "sin": 3,
         "cos": 3,
-        "tan": 3
+        "tan": 3,
+        "π": 4,
+        "e": 4,
     };
 
     return calculation.sort((a, b) => {
