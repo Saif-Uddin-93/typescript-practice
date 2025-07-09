@@ -6,16 +6,15 @@ export function Number(props?: any): React.ReactElement{
     const context = useCalculatorContext();
     
     const handleClick = () => {
-        console.log(`${props.number} clicked`);
+        console.log(`${props.value} clicked`);
         context.setDisplayedDigits([...context.displayedDigits, Digit({
             key: `Number-${context.displayedDigits.length}`,
-            value: props.number})]);
+            value: props.value})]);
         console.log(context?.displayedDigits)
     }
     return (<>
         <button className="number" onClick={handleClick}>
-            {`${props.number}`}
+            {`${props.value}`}
         </button>
     </>)
 }
-

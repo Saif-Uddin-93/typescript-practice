@@ -4,7 +4,7 @@ import { Number } from "../Number/index.tsx"
 import { Operator } from "../Operator/index.tsx"
 import "../../utils/mathFunctions.ts"
 import { useCalculatorContext } from "../context"
-import * as mathfuncs from "../../utils/mathFunctions.ts"
+import * as mathFuncs from "../../utils/mathFunctions.ts"
 // import React from "react"
 
 export function KeyPad(){
@@ -41,7 +41,7 @@ export function KeyPad(){
         },
         "+": ()=>{
             console.log("Add clicked");
-            mathfuncs.sortCalculation(context.calculation);
+            mathFuncs.sortCalculation(context.calculation);
         },
         "=":()=>{
             console.log("Equals clicked");
@@ -124,20 +124,20 @@ export function KeyPad(){
             <Operator key="%" {...operatorProps("%")}/>
             <Operator key="C" {...operatorProps("C")}/>
             <Operator key="CE" {...operatorProps("CE")}/>
-            <Number key="7" number="7"/>
-            <Number number="8"/>
-            <Number number="9"/>
+            <Number key="7" value="7"/>
+            <Number key="8" value="8"/>
+            <Number key="9" value="9"/>
             <Operator key="÷" {...operatorProps("÷")}/>
-            <Number number="4"/>
-            <Number number="5"/>
-            <Number number="6"/>
+            <Number key="4" value="4"/>
+            <Number key="5" value="5"/>
+            <Number key="6" value="6"/>
             <Operator key="×" {...operatorProps("×")}/>
-            <Number number="1"/>
-            <Number number="2"/>
-            <Number number="3"/>
+            <Number key="1" value="1"/>
+            <Number key="2" value="2"/>
+            <Number key="3" value="3"/>
             <Operator key="-" {...operatorProps("-")}/>
-            <Number number="0"/>
-            <Number number="."/>
+            <Number key="0" value="0"/>
+            <Number key="." value="."/>
             <Operator key="=" {...operatorProps("=")}/>
             <Operator key="+" {...operatorProps("+")}/>
             {/* </ section> */}
