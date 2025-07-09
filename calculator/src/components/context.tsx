@@ -28,7 +28,7 @@ export function CalculatorContextProvider ({children}: CalcContextProviderProps)
             calculation,
             setCalculation,
         }),
-        [displayedDigits, setDisplayedDigits, total, setTotal]
+        [displayedDigits, setDisplayedDigits, total, setTotal, calculation, setCalculation]
     );
 
     return(
