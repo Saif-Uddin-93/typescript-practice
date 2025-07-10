@@ -79,6 +79,8 @@ export function KeyPad(){
         },
         "log":()=>{
             console.log("Logarithm clicked");
+            // Typically, on a scientific calculator, "log" expects the user to input a number and then press the "log" key to compute log base 10 of that number.
+            // For example: input "100", then press "log" to get "2".
             mathFuncs.logarithm(1, 2); // Example usage, replace with actual logic
         },
         "+/-":()=>{
@@ -88,6 +90,7 @@ export function KeyPad(){
 
     const operatorProps = (operator:string) => ({
         value: operator,
+        type: "operator",
         func: operators[operator as keyof typeof operators]
     })
 
