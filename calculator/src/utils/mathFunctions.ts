@@ -1,3 +1,42 @@
+// import { useState } from "react";
+import { useCalculatorContext } from "../components/context";
+
+const context = useCalculatorContext();
+
+export const sortCalculation = (calculation: any[]) => {
+    const precedence: { [key: string]: number } = {
+        "+": 1,
+        "-": 1,
+        "×": 2,
+        "÷": 2,
+        "%": 2,
+        "x!": 3,
+        "xʸ": 3,
+        "√": 3,
+        "ln": 3,
+        "log": 3,
+        "sin": 3,
+        "cos": 3,
+        "tan": 3,
+    };
+    let newElement = "";
+    for (let i = 0; i < calculation.length; i++) {
+        const element = calculation[i];
+        if (element.type === "number") {
+            newElement = newElement + element.value;
+            context.setUpdatedCalculation([...context.updatedCalculation, newElement]);
+        }
+        else if (element.type === "operator") {
+            newElement = "";
+            context.setUpdatedCalculation([...context.updatedCalculation, element.value]);
+        }
+    }
+
+    return calculation.sort((a, b) => {
+        return (precedence[a] || 0) - (precedence[b] || 0);
+    });
+}
+
 export const add = (a: number, b: number): number => {
     return a + b;
 }
@@ -80,28 +119,107 @@ export const eulerNumber = (): number => {
     return Math.E;
 }
 
-export const equals = (): number => {
+export const equals = (calc:any[]): number => {
+    calc = sortCalculation(calc);
+    let total = 0;
+    calc.forEach(element => {
+        if (element.type === "number") {
+            total += parseFloat(element.value);
+        } else if (element.type === "operator") {
+            // Handle operator logic here
+            // For simplicity, we assume the last number is the total
+            // and apply the operator to it
+            console.log(`Applying operator: ${element.value}`);
+        }
+    });
+    console.log("Equals function called");
+    console.log("");
     return 1;
 }
 
-export const sortCalculation = (calculation: string[]): string[] => {
-    const precedence: { [key: string]: number } = {
-        "+": 1,
-        "-": 1,
-        "×": 2,
-        "÷": 2,
-        "%": 2,
-        "x!": 3,
-        "xʸ": 3,
-        "√": 3,
-        "ln": 3,
-        "log": 3,
-        "sin": 3,
-        "cos": 3,
-        "tan": 3,
+export const operators = {
+        "C": ()=>{
+            // "C" resets the entire calculation (all clear)
+            console.log("Clear clicked");
+            context.setCalculation([]);
+            context.setDisplayedDigits([]);
+        },
+        "CE": ()=>{
+            // "CE" clears the current entry only
+            console.log("Clear Entry clicked");
+            context.setDisplayedDigits([]);
+            // Remove digits from calculation array until the last operator
+            const operatorsSet = new Set(["+", "-", "×", "÷", "%", "xʸ"]);
+            let calc = [...context.calculation];
+            while (calc.length > 0 && !operatorsSet.has(calc[calc.length - 1])) {
+            calc.pop();
+            }
+            context.setCalculation(calc);
+            context.calculation.forEach(element => {
+                console.log("value in digit: ", element.value)
+            });
+            console.log("Updated calculation array: ", calc);
+            console.log("Updated displayed array: ", []);
+        },
+        "(": ()=>{
+            console.log("Left Parenthesis clicked");
+        },
+        ")": ()=>{
+            console.log("Right Parenthesis clicked");
+        },
+        "×": ()=>{
+            console.log("Multiply clicked");
+        },
+        "-": ()=>{
+            console.log("Subtract clicked");
+        },
+        "+": ()=>{
+            console.log("Add clicked");
+        },
+        "=":()=>{
+            console.log("Equals clicked");
+            return equals(context.calculation);
+        },
+        "÷": ()=>{
+            console.log("Divide clicked");
+        },
+        "%":()=>{
+            console.log("Percentage clicked");
+        },
+        "π":()=>{
+            console.log("Pi clicked");
+        },
+        "√":()=>{
+            console.log("Square Root clicked");
+        }, 
+        "x!":()=>{
+            console.log("Factorial clicked");
+        },
+        "xʸ":()=>{
+            console.log("Power clicked");
+        },
+        "ln":()=>{
+            console.log("Natural Log clicked");
+        },
+        "e":()=>{
+            console.log("Euler's Number clicked");
+        },
+        "sin":()=>{
+            console.log("Sine clicked");
+        },
+        "cos":()=>{
+            console.log("Cosine clicked");
+        },
+        "tan":()=>{
+            console.log("Tangent clicked");
+        },
+        "log":()=>{
+            console.log("Logarithm clicked");
+            // Typically, on a scientific calculator, "log" expects the user to input a number and then press the "log" key to compute log base 10 of that number.
+            // For example: input "100", then press "log" to get "2".
+            return logarithm(1, 2); // Example usage, replace with actual logic
+        },
+        "+/-":()=>{
+            console.log("Plus/Minus clicked");
+        }
     };
-
-    return calculation.sort((a, b) => {
-        return (precedence[a] || 0) - (precedence[b] || 0);
-    });
-}
