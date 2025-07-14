@@ -7,23 +7,21 @@ export function Operator(props?: any): React.ReactElement {
 
     const handleClick = () => {
         console.log(`${props.value} clicked`);
-        let lastIndex = context.calculation.length===0?0:context.calculation.length - 1;
+        const digit = Digit({
+            key: `Operator-${context.displayedDigits.length}`,
+            type: "operator",
+            value: props.value});
+        let lastIndex = context.calculation.length - 1;
         if (context.calculation[lastIndex]?.type != "operator" || props.value !== "C" || props.value !== "CE") {
             context.setDisplayedDigits([
                 ...context.displayedDigits,
-                Digit({
-                    key: `Operator-${context.displayedDigits.length}`,
-                    value: props.value
-                })
+                digit
             ]);
             props?.func();
             console.log(context?.displayedDigits);
         }
         else if (props.value === "C" || props.value === "CE") {
             props?.func();
-            context.setDisplayedDigits([
-                ...context.displayedDigits
-            ]);
         }
     }
     return (<>

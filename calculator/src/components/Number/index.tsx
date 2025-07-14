@@ -7,10 +7,12 @@ export function Number(props?: any): React.ReactElement{
     
     const handleClick = () => {
         console.log(`${props.value} clicked`);
-        context.setDisplayedDigits([...context.displayedDigits, Digit({
+        const digit = Digit({
             key: `Number-${context.displayedDigits.length}`,
             type: "number",
-            value: props.value})]);
+            value: props.value});
+        context.setDisplayedDigits([...context.displayedDigits, digit]);
+        context.setCalculation([...context.calculation, digit])
         console.log(context?.displayedDigits)
     }
     return (<>
