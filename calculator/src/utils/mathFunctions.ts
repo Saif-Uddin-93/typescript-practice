@@ -1,10 +1,9 @@
 // import { useState } from "react";
-import { useCalculatorContext } from "../components/context";
+import { useCalculatorContext } from "../components/context.tsx";
 import { Digit } from "../components/Digit";
 
-const context = useCalculatorContext();
-
 export const sortCalculation = (calculation: any[]) => {
+    const context = useCalculatorContext();
     // const precedence: { [key: string]: number } = {
     //     "+": 1,
     //     "-": 1,
@@ -151,7 +150,9 @@ export const equals = (calc:any[]): number => {
     return 1;
 }
 
-export const operators = {
+export const operators = () => {
+    const context = useCalculatorContext();
+    return {
         "C": ()=>{
             // "C" resets the entire calculation (all clear)
             console.log("Clear clicked");
@@ -237,3 +238,4 @@ export const operators = {
             console.log("Plus/Minus clicked");
         }
     };
+}
