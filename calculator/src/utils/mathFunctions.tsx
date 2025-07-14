@@ -1,40 +1,54 @@
 // import { useState } from "react";
 import { useCalculatorContext } from "../components/context";
+import { Digit } from "../components/Digit";
 
 const context = useCalculatorContext();
 
 export const sortCalculation = (calculation: any[]) => {
-    const precedence: { [key: string]: number } = {
-        "+": 1,
-        "-": 1,
-        "×": 2,
-        "÷": 2,
-        "%": 2,
-        "x!": 3,
-        "xʸ": 3,
-        "√": 3,
-        "ln": 3,
-        "log": 3,
-        "sin": 3,
-        "cos": 3,
-        "tan": 3,
-    };
-    let newElement = "";
+    // const precedence: { [key: string]: number } = {
+    //     "+": 1,
+    //     "-": 1,
+    //     "×": 2,
+    //     "÷": 2,
+    //     "%": 2,
+    //     "x!": 3,
+    //     "xʸ": 3,
+    //     "√": 3,
+    //     "ln": 3,
+    //     "log": 3,
+    //     "sin": 3,
+    //     "cos": 3,
+    //     "tan": 3,
+    // };
+
+    // Join all numbers in between operators as one number in string format.
+    // This is to handle cases like [2, 3, ×, 4] where we want to treat 2, 3 as 23 so the calculation will be 23 * 4.
     for (let i = 0; i < calculation.length; i++) {
+        if (i===0) context.setUpdatedCalculation([]);
         const element = calculation[i];
-        if (element.type === "number") {
-            newElement = newElement + element.value;
+        const newElement = Digit({
+                key: element.key,
+                type: element.type,
+                value: element.value});
+        if (element.props.type === "number") {
+            newElement.props.value = newElement.props.value + element.props.value;
             context.setUpdatedCalculation([...context.updatedCalculation, newElement]);
         }
         else if (element.type === "operator") {
-            newElement = "";
-            context.setUpdatedCalculation([...context.updatedCalculation, element.value]);
+            context.setUpdatedCalculation([...context.updatedCalculation, newElement]);
         }
     }
 
-    return calculation.sort((a, b) => {
-        return (precedence[a] || 0) - (precedence[b] || 0);
-    });
+    for (let i = 0; i < context.updatedCalculation.length; i++) {
+        const element = context.updatedCalculation[i];
+        if (element.type === "operator"){
+            element.props.precedence
+        }
+    }
+    return context.updatedCalculation;
+    // return calculation.sort((a, b) => {
+    //     return (precedence[a] || 0) - (precedence[b] || 0);
+    // });
 }
 
 export const add = (a: number, b: number): number => {

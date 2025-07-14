@@ -12,8 +12,8 @@ type CalculatorContextType = {
     setTotal: React.Dispatch<React.SetStateAction<number>>;
     calculation: any[];
     setCalculation: React.Dispatch<React.SetStateAction<any[]>>;
-    updatedCalculation: string[];
-    setUpdatedCalculation: React.Dispatch<React.SetStateAction<string[]>>;
+    updatedCalculation: any[];
+    setUpdatedCalculation: React.Dispatch<React.SetStateAction<any[]>>;
 };
 
 export const CalculatorContext = createContext<CalculatorContextType | null>(null);
