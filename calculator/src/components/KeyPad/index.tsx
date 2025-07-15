@@ -19,6 +19,24 @@ export function KeyPad(){
         type: "number"
     })
 
+    const keys = [
+    {
+        key: 'e',
+        type: 'Operator'
+    },
+    {
+        key: '7',
+        type: 'Number'
+    }
+    ]
+    keys.map((keyValue) => {
+    const Component = keyValue.type === 'Operator' ? Operator : Number;
+    const ComponentProps = keyValue.type === 'Operator' ? operatorProps : numberProps;
+        return (
+        <Component key={keyValue} {...ComponentProps(keyValue)}/>
+        );
+    });
+
     return (<>
         <div id="keypad">
             <Operator key="e" {...operatorProps("e")}/>

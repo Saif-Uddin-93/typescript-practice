@@ -132,7 +132,7 @@ export const eulerNumber = (): number => {
     return Math.E;
 }
 
-export const equals = (calc:any[]): number => {
+export const equals = (calc:any[]): typeof Digit[] => {
     calc = sortCalculation(calc);
     let total = 0;
     calc.forEach(element => {
@@ -147,7 +147,7 @@ export const equals = (calc:any[]): number => {
     });
     console.log("Equals function called");
     console.log("");
-    return 1;
+    return [];
 }
 
 export const operators = () => {
